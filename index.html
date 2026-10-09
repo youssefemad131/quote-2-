@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تأمل</title>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       background:#170E07;color:#E8B94C;font-family:sans-serif;font-size:20px}
+  a{color:#E8B94C;margin:0 8px}
+</style>
+</head>
+<body>
+  ✝️ لحظة...
+<script>
+(function(){
+  var pages = ['beatitude.html', 'isaiah.html'];
+  var pick;
+  try {
+    // يبدّل عن آخر صفحة شافها الشخص ده، فمش هيشوف نفس الصفحة مرتين ورا بعض
+    var last = localStorage.getItem('lastMeditationPage');
+    var others = pages.filter(function(p){ return p !== last; });
+    pick = others[Math.floor(Math.random() * others.length)];
+    localStorage.setItem('lastMeditationPage', pick);
+  } catch(e) {
+    pick = pages[Math.floor(Math.random() * pages.length)];
+  }
+  location.replace(pick + location.search + location.hash);
+})();
+</script>
+<noscript><a href="beatitude.html">طوبى للجياع</a> · <a href="isaiah.html">لا تخف لأني معك</a></noscript>
+</body>
+</html>
